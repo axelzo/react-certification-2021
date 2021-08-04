@@ -2,9 +2,10 @@ import React, { useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
+import VideoList from '../../components/VideoList';
 import './Home.styles.css';
 
-function HomePage() {
+function HomePage({ search }) {
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
@@ -17,9 +18,9 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
       {authenticated ? (
         <>
+          <VideoList search={search} />
           <h2>Good to have you back</h2>
           <span>
             <Link to="/" onClick={deAuthenticate}>
@@ -30,7 +31,9 @@ function HomePage() {
           </span>
         </>
       ) : (
-        <Link to="/login">let me in →</Link>
+        <Link style={{ color: 'black' }} to="/login">
+          let me in →
+        </Link>
       )}
     </section>
   );

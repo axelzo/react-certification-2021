@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -12,6 +12,7 @@ import Layout from '../Layout';
 import { random } from '../../utils/fns';
 
 function App() {
+  const [search, setSearch] = useState('wizeline');
   useLayoutEffect(() => {
     const { body } = document;
 
@@ -30,13 +31,18 @@ function App() {
     };
   }, []);
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+    console.log(search);
+  };
+
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Layout>
+        <Layout onSearch={handleSearch}>
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <HomePage search={search} />
             </Route>
             <Route exact path="/login">
               <LoginPage />
