@@ -1,1 +1,6 @@
-export { default, useAuth } from './Auth.provider';
+export {
+  default,
+  useAuth,
+  AuthConfigProvider,
+  AuthConfigConsumer,
+} from './Auth.provider';

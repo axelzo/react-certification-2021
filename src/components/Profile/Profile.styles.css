@@ -1,0 +1,13 @@
+.profile {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+span:active {
+  text-decoration: none;
+  color: teal;
+}

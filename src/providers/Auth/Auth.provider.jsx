@@ -40,5 +40,6 @@ function AuthProvider({ children }) {
   );
 }
 
-export { useAuth };
+const { Consumer: AuthConfigConsumer, Provider: AuthConfigProvider } = AuthContext;
+export { AuthConfigConsumer, AuthConfigProvider, useAuth };
 export default AuthProvider;
